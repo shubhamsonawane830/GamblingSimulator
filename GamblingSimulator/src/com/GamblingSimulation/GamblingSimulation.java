@@ -14,10 +14,10 @@ public class GamblingSimulation {
 		int value = random.nextInt(2);
 		if(value == 1) {
 			System.out.println("*GAMBLER WON*");
-			stake++;
+			stake++ ;
 		}else {
 			System.out.println("*GAMBLER LOST*");
-			stake--;
+			stake-- ;
 		}
 		return stake;
 	}
@@ -45,7 +45,7 @@ public class GamblingSimulation {
             day_stake=resignStake();
             totalAmountEarned=totalAmountEarned+day_stake;
         }
-        System.out.println("Total Amount Earned or Loss by Gambler at End of given period:- " + totalAmountEarned);
+        System.out.println("Total Amount Earned or Loss by Gambler at End of 20 days:- " + totalAmountEarned);
         return totalAmountEarned;
     }
 
