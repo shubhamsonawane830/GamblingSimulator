@@ -1,5 +1,7 @@
 package com.GamblingSimulation;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Random;
 
 public class GamblingSimulation {
@@ -22,7 +24,7 @@ public class GamblingSimulation {
 			stake--;
 		}
 		return stake;
-	  }
+	}
 	
 	public Integer resignStake(int day) {
 		loosingAmount = (int)Math.round(STAKE * STAKE_VALUE);
@@ -41,9 +43,9 @@ public class GamblingSimulation {
 			}
 		}
 		return stake;
-	  }
+	}
 	
-	public int getTotalAmountWonOrLoss(){
+	public int getTotalAmountWonOrLoss() {
         int day_stake=0;
         for(int day=1;day<=20;day++) {
             day_stake=resignStake(day);
@@ -52,18 +54,29 @@ public class GamblingSimulation {
         }
         System.out.println("Total Amount Earned or Loss by Gambler at End of given period:- " + totalAmountEarned);
         return totalAmountEarned;
-       }
+    }
 	
 	public int calculateForMonth() {
         getTotalAmountWonOrLoss();
-        System.out.println("Days Won in  month:"+WonDays);
-        System.out.println("Days Loss in  month:"+LostDays);
+        System.out.println("Days Won in  month: "+WonDays);
+        System.out.println("Days Loss in  month: "+LostDays);
         return totalAmountEarned;
     }
 	
+	public void maximumMinimumEarnedDays() {
+		ArrayList<Integer> day_stake = new ArrayList<Integer>();
+		for(int day=1;day<=20;day++) {
+            day_stake.add(resignStake(day));
+        }
+		Collections.sort(day_stake);
+		int size = day_stake.size();
+		System.out.println("The luckiest day with maximum earnings: "+day_stake.get(size-1));
+		System.out.println("The unluckiest day with minimum earnings: "+day_stake.get(0));
+	}
+	
 	public static void main(String[] args) {
-		System.out.println("*WELCOME TO GAMBLING SIMULATION PROBLEM*");
+		System.out.println("*****WELCOME TO GAMBLING SIMULATION PROBLEM*****");
 		GamblingSimulation gambling = new GamblingSimulation();
-		gambling.calculateForMonth();
+		gambling.maximumMinimumEarnedDays();
 	}
 }
